@@ -7,11 +7,11 @@ public class Event {
     private String title;
     private String location;
     private String time;
-    private Integer price;
+    private int price;
     private String host;
     private int id;
 
-    public Event(String title, String location, String time, Integer price, String host) {
+    public Event(String title, String location, String time, int price, String host) {
         this.title = title;
         this.location = location;
         this.time = time;
@@ -35,7 +35,7 @@ public class Event {
         return time;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 

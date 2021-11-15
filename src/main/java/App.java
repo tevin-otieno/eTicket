@@ -24,7 +24,7 @@ public class App {
             Map<String,Object> model=new HashMap<String, Object>();
             String title=request.queryParams("title");
             String location=request.queryParams("location");
-            Integer price=Integer.parseInt(request.queryParams("price"));
+            int price=Integer.parseInt(request.queryParams("price"));
             String time=request.queryParams("time");
             String host=request.queryParams("host");
             Event ranger=new Event(title, location, time, price, host);
