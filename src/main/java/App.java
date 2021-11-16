@@ -36,7 +36,9 @@ public class App {
             int price = Integer.parseInt(request.queryParams("price"));
             String time = request.queryParams("time");
             String host = request.queryParams("host");
-            Event event = new Event(title, location, time, price, host);
+            String imageUrl = request.queryParams("imageUrl");
+            String description = request.queryParams("description");
+            Event event = new Event(title, location, time, price, host,imageUrl,description);
             eventDao.add(event);
             model.put("events", event);
 

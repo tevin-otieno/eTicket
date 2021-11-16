@@ -1,10 +1,13 @@
 package dao;
 
 import models.DB;
+import models.Event;
 import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
+
+import java.util.List;
 
 public class Sql2oUserDao implements UserDao {
 
@@ -46,6 +49,16 @@ public class Sql2oUserDao implements UserDao {
                     .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
+        }
+    }
+
+    @Override
+    public List<Event> userEvent(int event_id) {
+        String sql = "SELECT * FROM users where event_Id = :event_Id";
+        try (Connection con = DB.sql2o.open()){
+           return con.createQuery(sql)
+                .addParameter("event_Id", event_id)
+                .executeAndFetch(Event.class);
         }
     }
 
