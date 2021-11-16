@@ -10,13 +10,17 @@ public class Event {
     private int price;
     private String host;
     private int id;
+    private  String imageUrl;
+    private String description;
 
-    public Event(String title, String location, String eventTime, int price, String host) {
+    public Event(String title, String location, String eventTime, int price, String host, String imageUrl, String description) {
         this.title = title;
         this.location = location;
         this.eventTime = eventTime;
         this.price = price;
         this.host = host;
+        this.imageUrl = imageUrl;
+        this.description = description;
     }
 
     public int getId() {
@@ -41,6 +45,22 @@ public class Event {
 
     public String getHost() {
         return host;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setTitle(String title) {

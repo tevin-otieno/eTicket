@@ -13,7 +13,7 @@ public interface EventDao {
     Event findById(int id);
 
     //update
-    void update(int id,String title, String location, String eventTime, int price, String host);
+    void update(int id,String title, String location, String eventTime, int price, String host, String imageUrl, String description);
 
     //delete
     void deleteById(int id);

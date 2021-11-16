@@ -9,6 +9,7 @@ import org.sql2o.Sql2oException;
 import java.util.List;
 
 public class Sql2oEventDao implements EventDao {
+
     private final Sql2o sql2o;
     public Sql2oEventDao(Sql2o sql2o) {
         this.sql2o = sql2o;
@@ -17,7 +18,7 @@ public class Sql2oEventDao implements EventDao {
     @Override
     public void add(Event event) {
         try (Connection con= DB.sql2o.open()){
-            String sql="INSERT INTO events (title, location, eventtime, price, host) VALUES (:title,:location,:eventTime,:price,:host)";
+            String sql="INSERT INTO events (title, location, eventtime, price, host, imageUrl, description) VALUES (:title,:location,:eventTime,:price,:host, :imageUrl, :description)";
             int id =(int) con.createQuery(sql,true)
                     .bind(event)
                     .executeUpdate()
@@ -34,6 +35,7 @@ public class Sql2oEventDao implements EventDao {
         }
     }
 
+    @Override
     public Event findById(int id) {
         try (Connection con = DB.sql2o.open()) {
             return con.createQuery("SELECT * FROM events WHERE id = :id")
@@ -43,16 +45,18 @@ public class Sql2oEventDao implements EventDao {
     }
 
     @Override
-    public void update( int id,String title, String location, String eventTime, int price, String host) {
-        String sql = "UPDATE events SET (title, location, eventtime, price, host) = (:title, :location, :eventtime, :price, :host) WHERE id=:id";
+    public void update( int id,String title, String location, String eventTime, int price, String host, String imageUrl, String description) {
+        String sql = "UPDATE events SET (title, location, eventtime, price, host, imageUrl, description) = (:title, :location, :eventTime, :price, :host, :imageUrl, :description) WHERE id=:id";
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("title", title)
                     .addParameter("location", location)
-                    .addParameter("eventtime", eventTime)
+                    .addParameter("eventTime", eventTime)
                     .addParameter("price", price)
                     .addParameter("host", host)
                     .addParameter("id", id)
+                    .addParameter("imageUrl", imageUrl)
+                    .addParameter("description", description)
                     .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
