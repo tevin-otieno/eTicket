@@ -1,4 +1,7 @@
+import dao.Sql2oEventDao;
+import models.DB;
 import models.Event;
+import org.sql2o.Connection;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -10,6 +13,10 @@ import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
+
+        Sql2oEventDao eventDao = new Sql2oEventDao(DB.sql2o);
+        Connection conn = DB.sql2o.open();
+
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "index.hbs");
@@ -29,10 +36,9 @@ public class App {
             int price = Integer.parseInt(request.queryParams("price"));
             String time = request.queryParams("time");
             String host = request.queryParams("host");
-            Event ranger = new Event(title, location, time, price, host);
-            ranger.save();
-            System.out.println(ranger);
-            model.put("ranger", ranger);
+            Event event = new Event(title, location, time, price, host);
+            eventDao.add(event);
+            model.put("events", event);
 
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());

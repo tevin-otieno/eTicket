@@ -10,13 +10,17 @@ public class Event {
     private int price;
     private String host;
     private int id;
+    private  String imageUrl;
+    private String description;
 
-    public Event(String title, String location, String eventTime, int price, String host) {
+    public Event(String title, String location, String eventTime, int price, String host, String imageUrl, String description) {
         this.title = title;
         this.location = location;
         this.eventTime = eventTime;
         this.price = price;
         this.host = host;
+        this.imageUrl = imageUrl;
+        this.description = description;
     }
 
     public int getId() {
@@ -43,17 +47,43 @@ public class Event {
         return host;
     }
 
-    public void save() {
-        try (Connection con=DB.sql2o.open()){
-            String sql="INSERT INTO events (title, location, eventtime, price, host) VALUES (:title,:location,:eventtime,:price,:host)";
-            this.id=(int) con.createQuery(sql,true)
-                    .addParameter("title",this.title)
-                    .addParameter("location",this.location)
-                    .addParameter("eventtime",this.eventTime)
-                    .addParameter("price",this.price)
-                    .addParameter("host",this.host)
-                    .executeUpdate()
-                    .getKey();
-        }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
