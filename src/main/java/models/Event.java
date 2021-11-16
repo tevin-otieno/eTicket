@@ -43,17 +43,27 @@ public class Event {
         return host;
     }
 
-    public void save() {
-        try (Connection con=DB.sql2o.open()){
-            String sql="INSERT INTO events (title, location, eventtime, price, host) VALUES (:title,:location,:eventtime,:price,:host)";
-            this.id=(int) con.createQuery(sql,true)
-                    .addParameter("title",this.title)
-                    .addParameter("location",this.location)
-                    .addParameter("eventtime",this.eventTime)
-                    .addParameter("price",this.price)
-                    .addParameter("host",this.host)
-                    .executeUpdate()
-                    .getKey();
-        }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
