@@ -68,5 +68,13 @@ public class App {
 //            User user = new User(name,phoneNumber,ticket,eventId);
 //        });
 
+        get("/events/:id/delete",(request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int eventId = Integer.parseInt(request.params("id"));
+            Event foundEvent = eventDao.findById(eventId);
+            eventDao.deleteById(foundEvent.getId());
+            return new ModelAndView(model, "success-delete.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
