@@ -13,6 +13,7 @@ import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
+        staticFileLocation("/public");
 
         Sql2oEventDao eventDao = new Sql2oEventDao(DB.sql2o);
         Connection conn = DB.sql2o.open();

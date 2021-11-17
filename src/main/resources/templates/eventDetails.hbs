@@ -1,12 +1,45 @@
 {{#partial "content"}}
 
-<div class="text-center border border-4">
-        <h1 class="text-info"> {{events.title}}</h1>
-        <p>{{events.price}}</p>
-        <p>{{events.host}}</p>
-        <p>{{events.description}}</p>
+<div class="p-5 head">
+    <h1 class="text-center"> {{events.title}}</h1>
 </div>
-    <a href="/"> Home </a>
+
+<div class="container row mt-5 pt-5">
+    <div class="col-md-6">
+        <img src="#" height="400" alt="event image">
+    </div>
+    <div class="col-md-6 cont-1">
+        <h4>{{events.host}} presents {{events.title}}</h4>
+        <h4>Ticket price : Ksh. {{events.price}}</h4>
+        <h6>Description</h6>
+        <p class="text-secondary">{{events.description}}</p>
+    </div>
+
+    <div class="time pt-3 mt-5">
+        <h5>TIME</h5>
+        <p class="text-secondary">{{events.eventTime}}</p>
+    </div>
+</div>
+<hr>
+
+<h2 class="text-info text-center">Enter your details</h2>
+<div class="container">
+    <form action="/events/new" method="post" class="form">
+        <label for ="name">Enter name:</label>
+        <input type="text" class="form-control form-control-lg" id="name" name="title" placeholder="Input your name..." required>
+        <label for="phone number">Enter phonenumber</label>
+        <input type="text" class="form-control form-control-lg" id="phonenumber" name="phonenumber" placeholder="Input your phonenumber..." required>
+        <label for="ticket">ticket</label>
+        <select name="ticket" id="ticket">
+            <option>VIP </option>
+            <option>REGULAR</option>
+        </select>
+
+        <div>
+            <button type="submit" class="btn btn-outline-info">Buy Ticket</button>
+        </div>
+    </form>
+</div>
 
 {{/partial}}
 
