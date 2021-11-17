@@ -1,5 +1,7 @@
 /*event description*/
-
+*{
+font-family: 'Nanum Myeongjo', sans-serif;
+}
 .head h1 {
 color : lightblue;
 }
