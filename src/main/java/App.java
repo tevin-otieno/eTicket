@@ -1,6 +1,7 @@
 import dao.Sql2oEventDao;
 import models.DB;
 import models.Event;
+import models.User;
 import org.sql2o.Connection;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -56,6 +57,16 @@ public class App {
             model.put("events", foundEvent);
             return new ModelAndView(model, "eventDetails.hbs");
         }, new HandlebarsTemplateEngine());
+
+//        post("/user/new" , (request, response) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            String name = request.queryParams("name");
+//            String phoneNumber = request.queryParams("phoneNumber");
+//            String ticket = request.queryParams("ticket");
+//            int eventId = Integer.parseInt(request.queryParams("event"));
+//
+//            User user = new User(name,phoneNumber,ticket,eventId);
+//        });
 
     }
 }

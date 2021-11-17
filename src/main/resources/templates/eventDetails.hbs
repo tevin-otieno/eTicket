@@ -6,7 +6,7 @@
 
 <div class="container row mt-5 pt-5">
     <div class="col-md-6">
-        <img src="#" height="400" alt="event image">
+        <img src="{{events.imageUrl}}"alt="event image">
     </div>
     <div class="col-md-6 cont-1">
         <h4>{{events.host}} presents {{events.title}}</h4>
@@ -24,17 +24,17 @@
 
 <h2 class="text-info text-center">Enter your details</h2>
 <div class="container">
-    <form action="/events/new" method="post" class="form">
+    <form action="/user/new" method="post" class="form">
         <label for ="name">Enter name:</label>
         <input type="text" class="form-control form-control-lg" id="name" name="title" placeholder="Input your name..." required>
         <label for="phone number">Enter phonenumber</label>
-        <input type="text" class="form-control form-control-lg" id="phonenumber" name="phonenumber" placeholder="Input your phonenumber..." required>
+        <input type="text" class="form-control form-control-lg" id="phoneNumber" name="phoneNumber" placeholder="Input your phonenumber..." required>
         <label for="ticket">ticket</label>
         <select name="ticket" id="ticket">
             <option>VIP </option>
             <option>REGULAR</option>
         </select>
-
+        
         <div>
             <button type="submit" class="btn btn-outline-info">Buy Ticket</button>
         </div>
