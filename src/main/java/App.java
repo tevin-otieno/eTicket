@@ -19,6 +19,8 @@ public class App {
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            List<Event> allEvents = eventDao.getAll();
+            model.put("events", allEvents);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -54,11 +56,5 @@ public class App {
             return new ModelAndView(model, "eventDetails.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/events", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            List<Event> allEvents = eventDao.getAll();
-            model.put("events", allEvents);
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
     }
 }
