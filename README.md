@@ -18,11 +18,17 @@ A web application that allows event hosts to add events ,upon which clients can 
 
 ## Setup Requirements for Database
  install Postgress and get it configured successfully
- run psql < create.psql to successfully create an eticket database
- run psql < drop.sql to successfully delete an eticket database
+ <ol>
+   <li>run psql < create.psql to successfully create an eticket database </li>
+   <li>run psql < drop.sql to successfully delete an eticket database  </li>
+ </ol>
 
 ## In order to run locally
- Go to DB.class in main/java folder and insert your postgress credentials
+ <ul>
+    <li>Open the project on intellij IDEA</li>
+    <li>Go to DB.class in main/java folder and insert your postgress credentials</li>
+</ul> 
+ 
  
 ## Technologies Used
 <ul>
@@ -37,7 +43,7 @@ for support, kindly reach us via email  eticket-website@gmail.com
 
 ### License
 *This project is licensed under the terms of the MIT license.*
-Copyright (c) 2020 **Tevin Otieno, Felix Maina,Sheldon Okware, Simon Mungai**
+Copyright (c) 2021 **Tevin Otieno, Felix Maina,Sheldon Okware, Simon Mungai**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
