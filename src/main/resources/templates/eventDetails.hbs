@@ -26,9 +26,9 @@
 
 <h2 class="text-info text-center">Enter your details</h2>
 <div class="container form-event">
-    <form action="/user/new" method="post" class="form">
+    <form action="/events/{{events.id}}/user/ticket" method="post" class="form">
         <label for ="name">Enter name:</label>
-        <input type="text" class="form-control form-control-lg" id="name" name="title" placeholder="Input your name..." required>
+        <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Input your name..." required>
         <label for="phone number">Enter phonenumber</label>
         <input type="text" class="form-control form-control-lg" id="phoneNumber" name="phoneNumber" placeholder="Input your phonenumber..." required>
         <label for="ticket">ticket</label>
@@ -36,7 +36,10 @@
             <option>VIP </option>
             <option>REGULAR</option>
         </select>
-        
+
+        <label for="event">Event</label>
+        <input type="text" class="form-control form-control-lg" id="event" name="event" value="{{events.title}}" disabled>
+
         <div>
             <button type="submit" class="btn btn-outline-info">Buy Ticket</button>
         </div>

@@ -6,7 +6,7 @@ import models.User;
 import java.util.List;
 
 public interface UserDao {
-    void add (User event);
+    void add (User user);
 
     //read
     User findById(int id);
