@@ -14,6 +14,14 @@ public class User {
         this.event_Id= event_Id;
     }
 
+    public int getEvent_Id() {
+        return event_Id;
+    }
+
+    public void setEvent_Id(int event_Id) {
+        this.event_Id = event_Id;
+    }
+
     public String getName() {
         return name;
     }

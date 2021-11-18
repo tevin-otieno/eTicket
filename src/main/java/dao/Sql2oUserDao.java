@@ -19,7 +19,7 @@ public class Sql2oUserDao implements UserDao {
     @Override
     public void add(User user) {
         try (Connection con= DB.sql2o.open()){
-            String sql="INSERT INTO users (name, phonenumber, ticket) VALUES (:name,:phonenumber,:ticket)";
+            String sql="INSERT INTO users (name, phonenumber, ticket, event_Id) VALUES (:name,:phoneNumber, :ticket, :event_Id)";
             int id =(int) con.createQuery(sql,true)
                     .bind(user)
                     .executeUpdate()
@@ -43,8 +43,8 @@ public class Sql2oUserDao implements UserDao {
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("name", name)
-                    .addParameter("location", phoneNumber)
-                    .addParameter("eventtime", ticket)
+                    .addParameter("phonenumber", phoneNumber)
+                    .addParameter("ticket", ticket)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {

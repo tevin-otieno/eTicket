@@ -1,4 +1,5 @@
 import dao.Sql2oEventDao;
+import dao.Sql2oUserDao;
 import models.DB;
 import models.Event;
 import models.User;
@@ -17,6 +18,7 @@ public class App {
         staticFileLocation("/public");
 
         Sql2oEventDao eventDao = new Sql2oEventDao(DB.sql2o);
+        Sql2oUserDao userDao = new Sql2oUserDao(DB.sql2o);
         Connection conn = DB.sql2o.open();
 
         get("/", (request, response) -> {
@@ -58,15 +60,20 @@ public class App {
             return new ModelAndView(model, "eventDetails.hbs");
         }, new HandlebarsTemplateEngine());
 
-//        post("/user/new" , (request, response) -> {
-//            Map<String, Object> model = new HashMap<String, Object>();
-//            String name = request.queryParams("name");
-//            String phoneNumber = request.queryParams("phoneNumber");
-//            String ticket = request.queryParams("ticket");
-//            int eventId = Integer.parseInt(request.queryParams("event"));
-//
-//            User user = new User(name,phoneNumber,ticket,eventId);
-//        });
+        post("/events/:id/user/ticket" , (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            String phoneNumber = request.queryParams("phoneNumber");
+            String ticket = request.queryParams("ticket");
+            int eventId = Integer.parseInt(request.params("id"));
+
+            User user = new User(name,phoneNumber,ticket,eventId);
+            userDao.add(user);
+            Event foundEvent = eventDao.findById(eventId);
+            model.put("events",foundEvent);
+            model.put("user",user);
+            return new ModelAndView(model,"success-user.hbs");
+        }, new HandlebarsTemplateEngine());
 
         get("/events/:id/delete",(request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
@@ -74,6 +81,19 @@ public class App {
             Event foundEvent = eventDao.findById(eventId);
             eventDao.deleteById(foundEvent.getId());
             return new ModelAndView(model, "success-delete.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //show user details
+        get("/events/:id/user/ticket/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+
+            int userId = Integer.parseInt(request.params("id"));
+            User ticket = userDao.findById(userId);
+
+            Event found = eventDao.findById(ticket.getEvent_Id());
+            model.put("event",found);
+            model.put("userTicket", ticket);
+            return new ModelAndView(model, "user.hbs");
         }, new HandlebarsTemplateEngine());
 
     }
