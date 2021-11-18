@@ -8,28 +8,32 @@ A web application that allows event hosts to add events ,upon which clients can 
    <li>Sheldon Okware</li>
    <li>Simon Mungai</li>
 </ul>
-## Setup requirements
+
 ## Setup/Installation Requirements
 * Fork this repo
 * Clone this repo 
 * Open terminal
 * Navigate to appropriate directory using the cd command
 * type in the command git clone and paste the url of clone and then press enter 
-## Setup Requirements for Database
-* In PSQL:
-* CREATE DATABASE eticket;
-* \c eticket;
-*CREATE TABLE events (id serial PRIMARY KEY, title VARCHAR, location VARCHAR, eventtime VARCHAR,price INTEGER, host VARCHAR, imageurl VARCHAR, description VARCHAR);
-* CREATE TABLE users (id serial PRIMARY KEY, name VARCHAR, phonenumber VARCHAR, ticket VARCHAR, event_Id INTEGER);
-* CREATE DATABASE eticket_test WITH TEMPLATE eticket;
 
+## Setup Requirements for Database
+ In PSQL:
+ <ul>
+<li>CREATE DATABASE eticket;</li>
+<li \c eticket;</li>
+<li>CREATE TABLE events (id serial PRIMARY KEY, title VARCHAR, location VARCHAR, eventtime VARCHAR,price INTEGER, host VARCHAR, imageurl VARCHAR, description VARCHAR);</li>
+<li> CREATE TABLE users (id serial PRIMARY KEY, name VARCHAR, phonenumber VARCHAR, ticket VARCHAR, event_Id INTEGER);</li>
+<li> CREATE DATABASE eticket_test WITH TEMPLATE eticket;</li>
+</ul>
 ## In order to run locally
-* Go to DB.class in main/java folder and insert your postgress credentials
+ Go to DB.class in main/java folder and insert your postgress credentials
 ## Technologies Used
-* Java
-* Heroku
-* CSS
-* HBS
+<ul>
+<li>Java</li>
+<li>Heroku</li>
+<li>CSS</li>
+<li>HBS</li>
+</ul>
 ## Support and contact details
 for support, kindly reach us via email  eticket-website@gmail.com
 ### License
