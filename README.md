@@ -20,7 +20,7 @@ A web application that allows event hosts to add events ,upon which clients can 
  In PSQL:
  <ul>
 <li>CREATE DATABASE eticket;</li>
-<li \c eticket;</li>
+<li\c eticket;</li>
 <li>CREATE TABLE events (id serial PRIMARY KEY, title VARCHAR, location VARCHAR, eventtime VARCHAR,price INTEGER, host VARCHAR, imageurl VARCHAR, description VARCHAR);</li>
 <li> CREATE TABLE users (id serial PRIMARY KEY, name VARCHAR, phonenumber VARCHAR, ticket VARCHAR, event_Id INTEGER);</li>
 <li> CREATE DATABASE eticket_test WITH TEMPLATE eticket;</li>
@@ -36,11 +36,13 @@ A web application that allows event hosts to add events ,upon which clients can 
 <li>CSS</li>
 <li>HBS</li>
 </ul>
+
 ## Support and contact details
 for support, kindly reach us via email  eticket-website@gmail.com
+
 ### License
 *This project is licensed under the terms of the MIT license.*
-Copyright (c) 2020 **TeviN Otieno, Felix Maina,Sheldon Okware, Simon Mungai**
+Copyright (c) 2020 **Tevin Otieno, Felix Maina,Sheldon Okware, Simon Mungai**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
