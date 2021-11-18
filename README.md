@@ -25,8 +25,10 @@ A web application that allows event hosts to add events ,upon which clients can 
 <li> CREATE TABLE users (id serial PRIMARY KEY, name VARCHAR, phonenumber VARCHAR, ticket VARCHAR, event_Id INTEGER);</li>
 <li> CREATE DATABASE eticket_test WITH TEMPLATE eticket;</li>
 </ul>
+
 ## In order to run locally
  Go to DB.class in main/java folder and insert your postgress credentials
+ 
 ## Technologies Used
 <ul>
 <li>Java</li>
