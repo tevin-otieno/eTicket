@@ -17,14 +17,9 @@ A web application that allows event hosts to add events ,upon which clients can 
 * type in the command git clone and paste the url of clone and then press enter 
 
 ## Setup Requirements for Database
- In PSQL:
- <ul>
-<li>CREATE DATABASE eticket;</li>
-<li\c eticket;</li>
-<li>CREATE TABLE events (id serial PRIMARY KEY, title VARCHAR, location VARCHAR, eventtime VARCHAR,price INTEGER, host VARCHAR, imageurl VARCHAR, description VARCHAR);</li>
-<li> CREATE TABLE users (id serial PRIMARY KEY, name VARCHAR, phonenumber VARCHAR, ticket VARCHAR, event_Id INTEGER);</li>
-<li> CREATE DATABASE eticket_test WITH TEMPLATE eticket;</li>
-</ul>
+ install Postgress and get it configured successfully
+ run psql < create.psql to successfully create an eticket database
+ run psql < drop.sql to successfully delete an eticket database
 
 ## In order to run locally
  Go to DB.class in main/java folder and insert your postgress credentials
