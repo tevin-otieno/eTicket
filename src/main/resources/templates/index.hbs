@@ -1,4 +1,23 @@
 {{#partial "content"}}
-    <h1>Welcome to eticket</h1>
+    <div class="mt-5">
+        <h1 class="mt-5 text-center">Welcome to eticket</h1>
+    </div>
+
+    <div class="row row-cols-3">
+        {{#each events}}
+            <div class="col mt-2 mb-2">
+                <div class="card">
+                    <img src="{{imageUrl}}" alt="poster" height="400" width="350">
+                    <div>
+                        <h2>{{title}}</h2>
+                        <p>Be @ {{location}}</p>
+                        <p>Starting at:{{eventTime}}</p>
+                        <p>Hosted by: {{host}}</p>
+                    </div>
+                    <a class="btn btn-info" href="/events/{{id}}">Buy Ticket</a>
+                </div>
+            </div>
+        {{/each }}
+    </div>
 {{/partial}}
 {{> layout.hbs}}

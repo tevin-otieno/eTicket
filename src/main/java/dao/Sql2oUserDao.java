@@ -1,10 +1,13 @@
 package dao;
 
 import models.DB;
+import models.Event;
 import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
+
+import java.util.List;
 
 public class Sql2oUserDao implements UserDao {
 
@@ -16,7 +19,7 @@ public class Sql2oUserDao implements UserDao {
     @Override
     public void add(User user) {
         try (Connection con= DB.sql2o.open()){
-            String sql="INSERT INTO users (name, phonenumber, ticket) VALUES (:name,:phonenumber,:ticket)";
+            String sql="INSERT INTO users (name, phonenumber, ticket, event_Id) VALUES (:name,:phoneNumber, :ticket, :event_Id)";
             int id =(int) con.createQuery(sql,true)
                     .bind(user)
                     .executeUpdate()
@@ -40,12 +43,22 @@ public class Sql2oUserDao implements UserDao {
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("name", name)
-                    .addParameter("location", phoneNumber)
-                    .addParameter("eventtime", ticket)
+                    .addParameter("phonenumber", phoneNumber)
+                    .addParameter("ticket", ticket)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
+        }
+    }
+
+    @Override
+    public List<Event> userEvent(int event_id) {
+        String sql = "SELECT * FROM users where event_Id = :event_Id";
+        try (Connection con = DB.sql2o.open()){
+           return con.createQuery(sql)
+                .addParameter("event_Id", event_id)
+                .executeAndFetch(Event.class);
         }
     }
 
